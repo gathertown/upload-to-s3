@@ -3,7 +3,7 @@
 ## Description
 [Daemonset](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) that monitors `hostPath` and uploads files to an s3 bucket.
 
-## Logic Overview
+## Overview
 
 `Upload-to-s3` is monitoring a kubernetes volume of type [hostPath](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath) using the [inotify-tools](https://github.com/inotify-tools/inotify-tools).
 
@@ -18,6 +18,16 @@ The daemonset is using a hardcoded `nodeSelector` to limit the daemonset deploym
 
 Implementation based on [Handling Core-Dumps in Kubernetes Clusters in GCP](https://faun.pub/handling-core-dumps-in-kubernetes-clusters-in-gcp-b1b2a54c25dc).
 
+## Deployment Workflow
+
+* `develop` branch deploys in development cluster
+* `staging` branch deploys in staging clusters
+* `production` branch deploys in production clusters
+
+## Development
+
+Develop against the `develop` branch. Open PR to develop, then promote changes to `staging` and `production`.
+
 ## License
 
-See LICENSE file.
+See [LICENSE](LICENSE) file.
