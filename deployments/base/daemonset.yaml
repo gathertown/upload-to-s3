@@ -1,4 +1,4 @@
-ApiVersion: apps/v1
+apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: upload-to-s3
