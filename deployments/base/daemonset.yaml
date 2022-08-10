@@ -39,9 +39,9 @@ spec:
         - name: AWS_DEFAULT_REGION
           value: "us-east-2"
         - name: AWS_ACCESS_KEY_ID
-          value: "${__AWS_KEY_ID__}"
+          value: "__AWS_ACCESS_KEY_ID__"
         - name: AWS_SECRET_ACCESS_KEY
-          value: "${__AWS_SECRET_ACCESS_KEY__}"
+          value: "__AWS_SECRET_ACCESS_KEY__"
         resources:
           limits:
             memory: 100Mi

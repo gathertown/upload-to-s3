@@ -27,7 +27,8 @@ commands:
           cluster: << parameters.cluster >>
       - run:
           command: |
-            sed -i "s/__KUSTOMIZE_DOCKERHUB_CREDENTIALS__/$(echo -n ${DOCKERHUB_CREDENTIALS} | base64 -w0)/g" deployments/base/docker-registry.yaml
+            sed -i "s/__AWS_ACCESS_KEY_ID__/$(echo -n ${AWS_ACCESS_KEY_ID})/g" deployments/base/daemonset.yaml
+            sed -i "s/__AWS_SECRET_ACCESS_KEY__/$(echo -n ${AWS_SECRET_ACCESS_KEY})/g" deployments/base/daemonset.yaml
             cd deployments/overlays/cluster
             kustomize edit set image << parameters.image >>:${CIRCLE_SHA1:0:9}
             kustomize build .
