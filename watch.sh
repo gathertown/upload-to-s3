@@ -16,7 +16,7 @@ c_name="${CLUSTER_NAME:-unknown}"
 echo "[$(date '+%F %T')] Monitoring ${LOCAL_PATH} on ${n_name}"
 
 # launch inotifywait in the background
-inotifywait -m /"${LOCAL_PATH}" -e close_write | while read path action file
+inotifywait -q -m /"${LOCAL_PATH}" -e close_write | while read path action file
 do
   n="${S3_BUCKET}/${c_name}/${n_name}.${file}"
   aws s3 cp "${path}/${file}" "s3://${n}" --only-show-errors
