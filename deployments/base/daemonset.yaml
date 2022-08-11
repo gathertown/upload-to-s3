@@ -17,7 +17,7 @@ spec:
       initContainers:
       - name: set-coredump-permissions
         image: busybox:1.28
-        command: ['sh','-c','chown -R  1000:1000 /var/coredump']
+        command: ['sh','-c','chown -R 1000:1000 /var/coredump']
         securityContext:
           privileged: true
         volumeMounts:
@@ -38,10 +38,9 @@ spec:
           value: "sfu-coredump"
         - name: AWS_DEFAULT_REGION
           value: "us-east-2"
-        - name: AWS_ACCESS_KEY_ID
-          value: "__AWS_ACCESS_KEY_ID__"
-        - name: AWS_SECRET_ACCESS_KEY
-          value: "__AWS_SECRET_ACCESS_KEY__"
+        envFrom:
+        - secretRef:
+            name: upload-to-s3-environment
         resources:
           limits:
             memory: 100Mi

@@ -6,3 +6,4 @@ namespace: infrastructure
 
 resources:
 - daemonset.yaml
+- env-upload-to-s3.yaml

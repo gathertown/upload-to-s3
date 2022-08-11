@@ -1,0 +1,12 @@
+apiVersion: secrets.doppler.com/v1alpha1
+kind: DopplerSecret
+metadata:
+  name: upload-to-s3-environment-secrets # DopplerSecret Name
+  namespace: infrastructure
+spec:
+  tokenSecret: # Kubernetes service token secret (namespace defaults to doppler-operator-system)
+    name: doppler-gather-town-upload-to-s3-circleci-token
+    namespace: doppler-operator-system
+  managedSecret: # Kubernetes managed secret (will be created if does not exist)
+    name: upload-to-s3-environment
+    namespace: infrastructure # Should match the namespace of deployments that will use the secret
