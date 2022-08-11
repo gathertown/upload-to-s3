@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-# handle SIGTERM gracefully
+# SIGTERM propagation to child process
 _t() {
   echo "[$(date '+%F %T')] Caught SIGTERM signal!"
   kill -TERM "$child" 2>/dev/null
@@ -9,7 +9,7 @@ _t() {
 
 trap _t SIGTERM
 
-# set node variable
+# set kubernetes related variables
 n_name="${NODE_NAME:-unknown}"
 c_name="${CLUSTER_NAME:-unknown}"
 
