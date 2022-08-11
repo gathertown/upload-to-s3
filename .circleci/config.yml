@@ -27,6 +27,8 @@ commands:
           cluster: << parameters.cluster >>
       - run:
           command: |
+            export CLUSTER_NAME="$(doctl kubernetes clusters get <<parameters.cluster>> --format 'Name' --no-header)"
+            sed -i "s/__CLUSTER_NAME__/${CLUSTER_NAME}/g" deployments/base/daemonset.yaml
             cd deployments/overlays/cluster
             kustomize edit set image << parameters.image >>:${CIRCLE_SHA1:0:9}
             kustomize build .

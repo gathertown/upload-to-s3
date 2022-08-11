@@ -46,8 +46,8 @@ spec:
           value: "/var/coredump"
         - name: S3_BUCKET
           value: "sfu-coredump"
-        - name: AWS_DEFAULT_REGION
-          value: "us-east-2"
+        - name: CLUSTER_NAME
+          value: __CLUSTER_NAME__
         envFrom:
         - secretRef:
             name: upload-to-s3-environment
